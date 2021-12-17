@@ -1,10 +1,6 @@
 <div class="person-box" *ngIf="person">
   <div class="photo">
     <img src="{{person.imageUrl}}" alt="">
-    <div class="text">
-      <strong>{{person.prefix}} {{person.name}} {{person.lastName}}</strong>
-      <p>{{person.title}}</p>
-    </div>
   </div>
   <div class="about">
     <p>{{person.email}}</p>
