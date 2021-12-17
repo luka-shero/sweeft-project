@@ -1,0 +1,34 @@
+<div class="person-box" *ngIf="person">
+  <div class="photo">
+    <img src="{{person.imageUrl}}" alt="">
+    <div class="text">
+      <strong>{{person.prefix}} {{person.name}} {{person.lastName}}</strong>
+      <p>{{person.title}}</p>
+    </div>
+  </div>
+  <div class="about">
+    <p>{{person.email}}</p>
+    <p>{{person.jobArea}}</p>
+    <p>{{person.jobType}}</p>
+  </div>
+</div>
+
+<div class="contain">
+  <div class="box" *ngFor="let a of airlines; let i = index">
+    <div class="innerbox" *ngIf="i + 1 === airlines.length" #theLastList routerLink="../{{ a.id }}">
+      <img src="{{a.imageUrl}}" alt="">
+      <div class="text">
+        <strong>{{a.prefix}} {{a.name}} {{a.lastName}}</strong>
+        <p>{{a.title}}</p>
+      </div>
+    </div>
+
+    <div class="innerbox" *ngIf="i + 1 != airlines.length" routerLink="../{{ a.id }}">
+      <img src="{{a.imageUrl}}" alt="">
+      <div class="text">
+        <strong>{{a.prefix}} {{a.name}} {{a.lastName}}</strong>
+        <p>{{a.title}}</p>
+      </div>
+    </div>
+  </div>
+</div>

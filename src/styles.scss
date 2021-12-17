@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+img{
+    width: 100%;
+}
+
+.contain{
+
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.box{
+    width: 25%;
+    display: block;
+
+
+}
+.innerbox{
+    cursor: pointer;
+    border: 1px solid #ccc;
+    margin: 10px;
+
+}
+.text{
+    padding: 10px;
+    padding-bottom: 0;
+    line-height: 5px;
+}
+@media (max-width: 980px){
+    .box{
+        width: 50%;
+
+    }
+}
