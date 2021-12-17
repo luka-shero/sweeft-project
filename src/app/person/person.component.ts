@@ -27,9 +27,7 @@ export class PersonComponent implements OnInit, OnDestroy, AfterViewInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-  //   this.router.routeReuseStrategy.shouldReuseRoute = function() {
-  //     return false;
-  //   };
+
   }
 
   ngOnInit() {
@@ -44,7 +42,6 @@ export class PersonComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getPerson(){
     this.alService.getPerson(this.id).subscribe(person => this.person = person)
-    console.log(this.person)
   }
 
   ngAfterViewInit() {
@@ -55,7 +52,6 @@ export class PersonComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getId(){
     this.route.params.subscribe((params)=> this.id = params['id'])
-    console.log(this.id)
   }
 
   getAirlines() {
@@ -64,7 +60,6 @@ export class PersonComponent implements OnInit, OnDestroy, AfterViewInit {
       d.list.forEach((element:any) => {
         this.airlines.push(element);
       });
-      console.log(this.airlines)
     });
   }
 
