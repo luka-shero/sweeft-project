@@ -3,15 +3,33 @@
     <img src="{{person.imageUrl}}" alt="">
   </div>
   <div class="about">
-    <p>{{person.email}}</p>
-    <p>{{person.jobArea}}</p>
-    <p>{{person.jobType}}</p>
+    <p>{{person.prefix}} {{person.name}} {{person.lastName}}</p>
+    <p>Email: {{person.email}}</p>
+    <p>Ip Address: {{person.ip}}</p>
+    <p>Ip Address: {{person.ip}}</p>
+    <p>Job Area: {{person.jobArea}}</p>
+    <p>Job Type: {{person.jobtype}}</p>
+  </div>
+  <div class="location">
+    <p>{{person.company.name}}</p>
+    <p>{{person.company.suffix}}</p>
+    <p>City: {{person.address.city}}</p>
+    <p>Country: {{person.address.country}}</p>
+    <p>State: {{person.address.state}}</p>
+    <p>Street Address: {{person.address.streetAddress}}</p>
+    <p>ZIP: {{person.address.zipCode}}</p>
+  </div>
+</div>
+
+<div *ngIf="friends.length !== 0" class="person">
+  <div *ngFor="let friend of friends;">
+    <a routerLink="../{{friend.id}}" (click)="linkFalse()"><p> {{ friend.name }} {{friend.lastName}} - ></p></a>
   </div>
 </div>
 
 <div class="contain">
   <div class="box" *ngFor="let a of airlines; let i = index">
-    <div class="innerbox" *ngIf="i + 1 === airlines.length" #theLastList routerLink="../{{ a.id }}">
+    <div class="innerbox" *ngIf="i + 1 === airlines.length" #theLastList routerLink="../{{ a.id }}" (click)="linkTrue()">
       <img src="{{a.imageUrl}}" alt="">
       <div class="text">
         <strong>{{a.prefix}} {{a.name}} {{a.lastName}}</strong>
@@ -19,7 +37,7 @@
       </div>
     </div>
 
-    <div class="innerbox" *ngIf="i + 1 != airlines.length" routerLink="../{{ a.id }}">
+    <div class="innerbox" *ngIf="i + 1 != airlines.length" routerLink="../{{ a.id }}" (click)="linkTrue()">
       <img src="{{a.imageUrl}}" alt="">
       <div class="text">
         <strong>{{a.prefix}} {{a.name}} {{a.lastName}}</strong>

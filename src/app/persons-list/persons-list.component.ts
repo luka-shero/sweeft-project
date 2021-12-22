@@ -36,6 +36,10 @@ export class PersonsListComponent implements OnInit, AfterViewInit {
     this.alSub = this.alService.getAS(this.currentPage).subscribe((d) => {
       this.totalPages = d.pagination.total;
       d.list.forEach((element:any) => {
+        let newUrl = element.imageUrl.split('/')
+        newUrl[4] = Math.floor(Math.random() * 20) + 480 + "";
+        newUrl = newUrl.join('/')
+        element.imageUrl = newUrl;
         this.persons.push(element);
       });
     });

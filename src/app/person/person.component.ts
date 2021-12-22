@@ -19,6 +19,8 @@ export class PersonComponent implements OnInit, OnDestroy, AfterViewInit {
   observer: any;
   id:number = 0;
   person:any;
+  friends:any = [];
+  link:boolean = true;
 
   paramsSub: any;
 
@@ -40,8 +42,21 @@ export class PersonComponent implements OnInit, OnDestroy, AfterViewInit {
     this.intersectionObserver();
   }
 
+  linkTrue(){
+    this.link = true;
+  }
+
+  linkFalse(){
+    this.link = false;
+  }
+
   getPerson(){
-    this.alService.getPerson(this.id).subscribe(person => this.person = person)
+    this.alService.getPerson(this.id).subscribe((person) => {
+      this.person = person;
+      if(this.link){
+        this.friends.push(person);
+      }
+    })
   }
 
   ngAfterViewInit() {
@@ -58,6 +73,10 @@ export class PersonComponent implements OnInit, OnDestroy, AfterViewInit {
     this.alSub = this.alService.getPersons(this.id, this.currentPage).subscribe((d) => {
       this.totalPages = d.pagination.total;
       d.list.forEach((element:any) => {
+        let newUrl = element.imageUrl.split('/')
+        newUrl[4] = Math.floor(Math.random() * 20) + 480 + "";
+        newUrl = newUrl.join('/')
+        element.imageUrl = newUrl;
         this.airlines.push(element);
       });
     });
